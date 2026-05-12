@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recumbent Trike Store — Trikes & sport wheelchairs for any rider, any budget. Denver, CO.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-up: #111111;
+    --bg-card: #161616;
+    --bg-card-inner: #1c1c1c;
+    --ink: #ffffff;
+    --ink-soft: #c8c8c8;
+    --ink-mute: #777777;
+    --line: #252525;
+    --line-strong: #3a3a3a;
+    --accent: #c4ff00;
+    --accent-soft: #d6ff4d;
+    --accent-deep: #a3d600;
+    --accent-glow: rgba(196, 255, 0, .12);
+    --shadow: 0 2px 8px rgba(0,0,0,.3), 0 12px 36px rgba(0,0,0,.2);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,.4), 0 32px 64px rgba(0,0,0,.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  /* ─── Typography ─────────────────── */
+  .display {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+  }
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+  }
+
+  /* ─── Layout ─────────────────── */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  @media (max-width: 720px) {
+    .container { padding: 0 24px; }
+    body { font-size: 16px; }
+  }
+
+  /* ─── Header ─────────────────── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, .82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s, background .3s;
+  }
+  header.scrolled { border-bottom-color: var(--line); }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px) { .nav { padding: 14px 24px; } }
+  .brand {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-mark {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+  }
+  .brand-mark::before {
+    content: '';
+    position: absolute;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    position: relative;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:not(.cta)::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width .25s ease;
+  }
+  .nav-links a:not(.cta):hover::after { width: 100%; }
+  .cta {
+    background: var(--accent);
+    color: var(--bg) !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    transition: all .2s;
+  }
+  .cta:hover {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 720px) {
+    .nav-links { gap: 18px; }
+    .nav-links a:not(.cta):not(.brand-link) { display: none; }
+  }
+
+  /* ─── Hero ─────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+  .hero-image { position: absolute; inset: 0; z-index: 0; }
+  .hero-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+  }
+  .hero-image img.active { opacity: 1; }
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(10,10,10,.5) 0%, rgba(10,10,10,.1) 30%, rgba(10,10,10,.85) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--ink);
+    padding: 80px 0 64px;
+    width: 100%;
+  }
+  .hero h1 {
+    font-size: clamp(52px, 9vw, 140px);
+    max-width: 14ch;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+    display: block;
+  }
+  .hero p {
+    max-width: 52ch;
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-secondary {
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all .2s;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid rgba(255,255,255,.3);
+  }
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .hero-meta {
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right center;
+    z-index: 2;
+    color: rgba(255,255,255,0.4);
+  }
+  @media (max-width: 900px) { .hero-meta { display: none; } }
+
+  /* ─── Manifesto ─────────────────── */
+  .manifesto {
+    padding: 140px 0 120px;
+    background: var(--bg);
+  }
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .manifesto-grid { grid-template-columns: 1fr; gap: 32px; }
+    .manifesto { padding: 80px 0; }
+  }
+  .manifesto h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    max-width: 14ch;
+    margin: 16px 0 0;
+  }
+  .manifesto h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .manifesto-body p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .manifesto-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 600px) { .manifesto-stats { grid-template-columns: 1fr 1fr; } }
+  .stat .num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .stat .num em { font-style: normal; color: var(--accent); }
+  .stat .desc {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+
+  /* ─── Brands ─────────────────── */
+  .brands {
+    padding: 100px 0 60px;
+    background: var(--bg-up);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .section-head h2 {
+    font-size: clamp(40px, 5.5vw, 72px);
+    max-width: 18ch;
+    line-height: 0.95;
+  }
+  .section-head h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .section-head .label { margin-bottom: 8px; display: block; }
+  .section-head-text { max-width: 34ch; color: var(--ink-mute); font-size: 15px; line-height: 1.6; }
+
+  .brand-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+  }
+  .brand-row:nth-child(even) { direction: rtl; }
+  .brand-row:nth-child(even) > * { direction: ltr; }
+  @media (max-width: 900px) {
+    .brand-row { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; direction: ltr !important; }
+  }
+  .brand-image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--bg-card);
+  }
+  .brand-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .brand-row:hover .brand-image img { transform: scale(1.04); }
+  .brand-info .brand-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(44px, 5vw, 72px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+    margin: 12px 0 8px;
+  }
+  .brand-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 20px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+  .brand-info p {
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .brand-features {
+    list-style: none;
+    margin-bottom: 32px;
+    padding: 0;
+  }
+  .brand-features li {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .brand-features li:last-child { border-bottom: 1px solid var(--line); }
+  .brand-features .feat-label {
+    color: var(--ink-mute);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    width: 100px;
+  }
+  .brand-features .feat-value { font-weight: 500; color: var(--ink); }
+  .brand-features .feat-value.highlight { color: var(--accent); font-weight: 600; }
+
+  .inline-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+    transition: color .2s;
+  }
+  .inline-link:hover { color: var(--accent); }
+
+  /* ─── Delivery ─────────────────── */
+  .delivery {
+    padding: 140px 0;
+    background: var(--bg);
+  }
+  @media (max-width: 800px) { .delivery { padding: 80px 0; } }
+  .delivery-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 64px;
+  }
+  @media (max-width: 800px) { .delivery-cards { grid-template-columns: 1fr; } }
+  .delivery-card {
+    padding: 56px 48px;
+    background: var(--bg-card);
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    transition: transform .3s, border-color .3s;
+  }
+  .delivery-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-strong);
+  }
+  @media (max-width: 600px) { .delivery-card { padding: 36px 28px; } }
+  .delivery-card::before {
+    content: 'FREE';
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    background: var(--accent-glow);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .delivery-card .label { display: block; margin-bottom: 16px; }
+  .delivery-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .delivery-card h3 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .delivery-card .scope {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-mute);
+    margin-bottom: 20px;
+  }
+  .delivery-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .delivery-card .map-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+    color: var(--accent);
+  }
+
+  /* ─── For Programs ─────────────────── */
+  .programs {
+    padding: 140px 0;
+    background: var(--bg-up);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 800px) { .programs { padding: 80px 0; } }
+  .programs-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 64px;
+  }
+  @media (max-width: 800px) { .programs-cards { grid-template-columns: 1fr; } }
+  .program-card {
+    padding: 56px 48px;
+    background: var(--bg-card);
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    transition: transform .3s, border-color .3s;
+  }
+  .program-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-strong);
+  }
+  @media (max-width: 600px) { .program-card { padding: 36px 28px; } }
+  .program-card .label { display: block; margin-bottom: 16px; }
+  .program-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(26px, 2.8vw, 38px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .program-card h3 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .program-card p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .programs-cta {
+    margin-top: 48px;
+    padding: 56px 56px;
+    background: var(--accent);
+    color: var(--bg);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 600px) { .programs-cta { padding: 36px 28px; } }
+  .programs-cta .label { display: block; margin-bottom: 12px; color: rgba(10,10,10,.5); }
+  .programs-cta h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--bg);
+    margin-bottom: 20px;
+    max-width: 22ch;
+  }
+  .programs-cta p {
+    color: rgba(10,10,10,0.75);
+    max-width: 60ch;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .programs-cta .inline-link {
+    color: var(--bg);
+    border-bottom: 2px solid rgba(10,10,10,.4);
+    font-weight: 600;
+  }
+  .programs-cta .inline-link:hover { border-bottom-color: var(--bg); }
+
+  /* ─── Story ─────────────────── */
+  .story {
+    padding: 160px 0;
+    background: var(--ink);
+    color: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .story::before {
+    content: '→';
+    position: absolute;
+    top: -60px;
+    right: 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 420px;
+    font-weight: 700;
+    color: rgba(196,255,0,.07);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .story-content {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .story .label { color: rgba(10,10,10,.4); }
+  .story h2 {
+    font-size: clamp(56px, 10vw, 140px);
+    margin: 16px 0 36px;
+    color: var(--bg);
+  }
+  .story h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .story-quote {
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.6;
+    color: rgba(10,10,10,0.6);
+    margin: 0 auto 36px;
+    max-width: 44ch;
+    font-weight: 300;
+  }
+  .story-attribution {
+    font-size: 13px;
+    color: rgba(10,10,10,.35);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── Process ─────────────────── */
+  .process {
+    padding: 140px 0;
+    background: var(--bg);
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 64px;
+  }
+  @media (max-width: 800px) {
+    .process-grid { grid-template-columns: 1fr; gap: 40px; }
+    .process { padding: 80px 0; }
+  }
+  .process-step {
+    position: relative;
+    padding-top: 32px;
+    border-top: 2px solid var(--accent);
+  }
+  .process-step .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: block;
+    text-transform: uppercase;
+  }
+  .process-step h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .process-step p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ─── FAQ ─────────────────── */
+  .faq {
+    padding: 140px 0;
+    background: var(--bg-up);
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 800px) { .faq { padding: 80px 0; } }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .faq-list { border-top: 1px solid var(--line-strong); }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 28px 48px 28px 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    cursor: pointer;
+    position: relative;
+    line-height: 1.2;
+    transition: color .2s;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-q::after {
+    content: '+';
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--accent);
+    transition: transform .3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .faq-a-inner {
+    padding: 0 0 32px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-size: 15px;
+    max-width: 60ch;
+  }
+
+  /* ─── Contact ─────────────────── */
+  .contact {
+    padding: 140px 0;
+    background: var(--bg);
+  }
+  @media (max-width: 800px) { .contact { padding: 80px 0; } }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 96px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+  .contact-intro h2 {
+    font-size: clamp(40px, 5.5vw, 72px);
+    margin: 16px 0 28px;
+    line-height: 0.95;
+  }
+  .contact-intro h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .contact-intro p {
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .channel-card {
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: start;
+    transition: border-color .2s, transform .2s;
+    cursor: pointer;
+  }
+  .channel-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .channel-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .channel-card .ch-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .channel-card .ch-desc {
+    font-size: 13px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+  .channel-card .ch-tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  form {
+    background: var(--bg-card);
+    padding: 48px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 600px) { form { padding: 28px 24px; } }
+  form h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  form .form-sub {
+    color: var(--ink-mute);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+  .field { margin-bottom: 28px; position: relative; }
+  .field label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line-strong);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    transition: border-color .2s;
+    outline: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-bottom-color: var(--accent);
+  }
+  .field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23c4ff00' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .field select option {
+    background: var(--bg-card);
+    color: var(--ink);
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 110px;
+    font-family: 'Inter', sans-serif;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--ink-mute); }
+  .submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s;
+    margin-top: 12px;
+  }
+  .submit-btn:hover {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+  }
+  .form-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-align: center;
+  }
+  .form-success {
+    display: none;
+    padding: 18px;
+    background: var(--accent-glow);
+    border-radius: 6px;
+    color: var(--accent);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .form-success.visible { display: block; }
+
+  /* ─── Footer ─────────────────── */
+  footer {
+    background: var(--bg-card);
+    color: var(--ink-soft);
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
+  .footer-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .footer-tag {
+    color: var(--ink-mute);
+    max-width: 34ch;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .footer-col a {
+    display: block;
+    color: var(--ink-mute);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: color .2s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+
+  /* ─── Reveal animations ─────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ════ Header ════ -->
+<header id="hdr">
+  <div class="nav">
+    <a href="#top" class="brand brand-link"><span class="brand-mark"></span>Recumbent Trike Store</a>
+    <div class="nav-links">
+      <a href="#brands">Brands</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#programs">Programs</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="cta">Place an order</a>
+    </div>
+  </div>
+</header>
+
+<!-- ════ Hero ════ -->
+<section class="hero" id="top">
+  <div class="hero-image" id="heroSlider">
+    <img src="https://hyperagent.com/api/files/usergenerated/threads/cmonmpoil010j06ad3f7n9fyl/images/c89b0620-c7ec-4418-aaf3-7a6bf7b2662b.png" alt="Recumbent trike rider on a mountain road at dusk" class="active">
+    <img src="https://hyperagent.com/api/files/usergenerated/threads/cmonmpoil010j06ad3f7n9fyl/images/635f30ad-6fad-4798-a2e5-1077f0a0223a.png" alt="Wheelchair racer in competition action" style="object-position: center 40%;">
+    <img src="https://hyperagent.com/api/files/usergenerated/threads/cmonmpoil010j06ad3f7n9fyl/images/f2f3102e-0aa0-444b-836d-a892b5c54b0a.png" alt="Recumbent tricycle on a Colorado mountain highway at golden hour">
+  </div>
+  <div class="hero-meta">
+    <span class="eyebrow" style="color: rgba(255,255,255,.4);">Specialist online retailer · Denver, Colorado</span>
+  </div>
+  <div class="container hero-content">
+    <span class="label">Online retailer · Denver, CO</span>
+    <h1 class="display">Any rider.<em>Every budget.</em></h1>
+    <p>Four brands of recumbent trikes and sport wheelchairs — from $2,500 daily riders to $12,000 touring machines and competition chairs. Free delivery in the Denver Metro or free pickup in Thornton, CO.</p>
+    <div class="hero-actions">
+      <a href="#brands" class="btn-primary">See the lineup
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+      <a href="#contact" class="btn-secondary">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Manifesto ════ -->
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto-grid">
+      <div>
+        <span class="label">No. 01 — The Idea</span>
+        <h2 class="display reveal">Options for <em>every rider.</em></h2>
+      </div>
+      <div class="manifesto-body reveal">
+        <p>We're not here to sell you the most expensive trike in the catalog. We're here to put you on the right one — whether that's a $2,500 daily cruiser or a $12,000 touring machine. Four brands, a wide price range, and zero pressure.</p>
+        <p>Email us with questions about models, configurations, accessories, financing, or delivery — we reply within one business day. When you've made your decision, you place the order directly. We handle the rest: ordering from the manufacturer, tracking the build, getting it to your door.</p>
+
+        <div class="manifesto-stats">
+          <div class="stat">
+            <div class="num"><em>4</em></div>
+            <div class="desc">Brands across a range of price points and riding styles</div>
+          </div>
+          <div class="stat">
+            <div class="num">2<em>–6</em></div>
+            <div class="desc">Weeks of factory build time, across all four brands</div>
+          </div>
+          <div class="stat">
+            <div class="num"><em>1</em> day</div>
+            <div class="desc">Email reply time — every question answered within one business day</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Brands ════ -->
+<section class="brands" id="brands">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">No. 02 — The Lineup</span>
+        <h2 class="display reveal">Four brands, <em>every price point.</em></h2>
+      </div>
+      <div class="section-head-text reveal">From accessible daily riders to premium touring rigs and competition sport chairs. Whatever your budget, we carry the brand that fits it.</div>
+    </div>
+
+    <!-- ICE Trikes -->
+    <div class="brand-row reveal">
+      <div class="brand-image">
+        <img src="https://www.icetrikes.co/images/Products/Sprint-X/Action-Gallery-Red/Sprint-x-002.jpg" alt="ICE Sprint X recumbent trike">
+      </div>
+      <div class="brand-info">
+        <span class="label">Cornwall, England</span>
+        <div class="brand-name">ICE Trikes</div>
+        <div class="brand-tagline">Premium touring — for riders who go far and stay out long.</div>
+        <p>Hand-built in Falmouth since 1999. ICE machines are what long-distance recumbent riders end up on — folding frames, genuine suspension, components selected for tens of thousands of miles. The Sprint, Adventure, and Full Fat are touring legends. This is the top of the range.</p>
+        <ul class="brand-features">
+          <li><span class="feat-label">Best for</span><span class="feat-value">Long-distance, touring, off-road</span></li>
+          <li><span class="feat-label">Price range</span><span class="feat-value highlight">$6,000 – $12,000</span></li>
+          <li><span class="feat-label">Models</span><span class="feat-value">Sprint X · Adventure HD · Full Fat</span></li>
+          <li><span class="feat-label">Build time</span><span class="feat-value">3 – 5 weeks at the factory</span></li>
+          <li><span class="feat-label">Delivery</span><span class="feat-value highlight">Free in Denver Metro · Free pickup in Thornton, CO</span></li>
+        </ul>
+        <a href="#contact" class="inline-link">Order an ICE trike →</a>
+      </div>
+    </div>
+
+    <!-- TerraTrike -->
+    <div class="brand-row reveal">
+      <div class="brand-image">
+        <img src="https://laidbackcycles.com/cdn/shop/files/Rambler-Gemstone-1_1080x.jpg?v=1744413181" alt="TerraTrike Rambler recumbent trike">
+      </div>
+      <div class="brand-info">
+        <span class="label">Kentwood, Michigan</span>
+        <div class="brand-name">TerraTrike</div>
+        <div class="brand-tagline">The widest range — from entry-level cruisers to premium touring.</div>
+        <p>The largest recumbent trike maker in North America, and the broadest lineup we carry. TerraTrike builds confident, comfortable rides for everyday life — low step-over, stable geometry, and models from entry-level all the way up to premium touring. The most options at the most price points.</p>
+        <ul class="brand-features">
+          <li><span class="feat-label">Best for</span><span class="feat-value">Daily riding, first-time buyers, widest selection</span></li>
+          <li><span class="feat-label">Price range</span><span class="feat-value highlight">$2,500 – $8,000</span></li>
+          <li><span class="feat-label">Models</span><span class="feat-value">Rambler · Maverick · Rover · Gran Tourismo</span></li>
+          <li><span class="feat-label">Build time</span><span class="feat-value">2 – 3 weeks at the factory</span></li>
+          <li><span class="feat-label">Delivery</span><span class="feat-value highlight">Free in Denver Metro · Free pickup in Thornton, CO</span></li>
+        </ul>
+        <a href="#contact" class="inline-link">Order a TerraTrike →</a>
+      </div>
+    </div>
+
+    <!-- GreenSpeed -->
+    <div class="brand-row reveal">
+      <div class="brand-image">
+        <img src="https://laidbackcycles.com/cdn/shop/files/Magnum-SD-Side-Orange-web_1080x.jpg?v=1705698882" alt="GreenSpeed Magnum recumbent trike">
+      </div>
+      <div class="brand-info">
+        <span class="label">Kentwood, Michigan</span>
+        <div class="brand-name">GreenSpeed</div>
+        <div class="brand-tagline">Heavy-duty — built for larger riders and serious durability.</div>
+        <p>The recumbent trike pioneer. Founded by Ian Sims in 1990 and now built in Michigan alongside TerraTrike as part of the WizWheelz family. GreenSpeed is the standard for heavy-duty recumbents — high weight capacity, bombproof frames, and the kind of durability that lasts decades. The Magnum is legendary.</p>
+        <ul class="brand-features">
+          <li><span class="feat-label">Best for</span><span class="feat-value">Larger riders, heavy-duty, max durability</span></li>
+          <li><span class="feat-label">Price range</span><span class="feat-value highlight">$3,000 – $7,000</span></li>
+          <li><span class="feat-label">Models</span><span class="feat-value">Magnum · Anura · GT series · X-series</span></li>
+          <li><span class="feat-label">Build time</span><span class="feat-value">2 – 3 weeks at the factory</span></li>
+          <li><span class="feat-label">Delivery</span><span class="feat-value highlight">Free in Denver Metro · Free pickup in Thornton, CO</span></li>
+        </ul>
+        <a href="#contact" class="inline-link">Order a GreenSpeed →</a>
+      </div>
+    </div>
+
+    <!-- Top End -->
+    <div class="brand-row reveal">
+      <div class="brand-image">
+        <img src="https://cdn11.bigcommerce.com/s-udr610a2x4/images/stencil/1280w/products/918/2099/1763889752.1280.1280__12273.1773058528.jpg" alt="Top End Eliminator NRG racing wheelchair">
+      </div>
+      <div class="brand-info">
+        <span class="label">Pinellas Park, Florida</span>
+        <div class="brand-name">Top End</div>
+        <div class="brand-tagline">Competition sport chairs — for athletes who compete.</div>
+        <p>For four decades, Top End has been the chair of choice for paralympic racers, basketball teams, and tennis players at the highest levels. Made-to-order geometry, camber, and finish — every chair built around the athlete's spec. Whether you're outfitting a rec center program or chasing a personal record.</p>
+        <ul class="brand-features">
+          <li><span class="feat-label">Best for</span><span class="feat-value">Racing, basketball, tennis, sport</span></li>
+          <li><span class="feat-label">Price range</span><span class="feat-value highlight">From $4,000+</span></li>
+          <li><span class="feat-label">Models</span><span class="feat-value">Eliminator NRG · Eliminator OSR · Pro-2 · Schulte 7000</span></li>
+          <li><span class="feat-label">Build time</span><span class="feat-value">4 – 6 weeks at the factory</span></li>
+          <li><span class="feat-label">Delivery</span><span class="feat-value highlight">Free in Denver Metro · Free pickup in Thornton, CO</span></li>
+        </ul>
+        <a href="#contact" class="inline-link">Order a Top End chair →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Delivery ════ -->
+<section class="delivery" id="delivery">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">No. 03 — Delivery</span>
+        <h2 class="display reveal">Free delivery, <em>no catch.</em></h2>
+      </div>
+      <div class="section-head-text reveal">Two ways to get your order at no charge: hand-delivery anywhere in the Denver Metro, or pickup at our Thornton, CO location.</div>
+    </div>
+
+    <div class="delivery-cards">
+      <div class="delivery-card reveal">
+        <svg class="map-icon" viewBox="0 0 56 56" fill="none">
+          <path d="M28 6C18.6 6 11 13.6 11 23c0 12.7 17 27 17 27s17-14.3 17-27c0-9.4-7.6-17-17-17z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="28" cy="22" r="6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="label">Hand-Delivered</span>
+        <h3>Free in the <em>Denver Metro.</em></h3>
+        <div class="scope">Trikes &amp; sport wheelchairs</div>
+        <p>If you're within the Denver Metro service area, we hand-deliver your order to your door at no charge — fully assembled, ready to ride or roll. We schedule the delivery directly with you when your build arrives at our location.</p>
+      </div>
+
+      <div class="delivery-card reveal">
+        <svg class="map-icon" viewBox="0 0 56 56" fill="none">
+          <path d="M8 22l4-10h32l4 10v3a5 5 0 0 1-10 0 5 5 0 0 1-10 0 5 5 0 0 1-10 0 5 5 0 0 1-10 0v-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M10 25v19h36V25" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M22 44V32h12v12" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="label">Pickup In Person</span>
+        <h3>Free at our <em>Thornton, CO</em> location.</h3>
+        <div class="scope">Outside the metro? Drive to us.</div>
+        <p>Free pickup at our Thornton, CO location. Everything assembled and ready to load when you arrive — saves shipping costs and puts you on the road the same day. Standard freight rates for shipping outside the area.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ For Programs ════ -->
+<section class="programs" id="programs">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">No. 04 — For Programs</span>
+        <h2 class="display reveal">For the programs <em>doing the work.</em></h2>
+      </div>
+      <div class="section-head-text reveal">We work with adaptive rec programs, sport leagues, and rehab partners across the Front Range and Mountain West.</div>
+    </div>
+
+    <div class="programs-cards">
+      <div class="program-card reveal">
+        <span class="label">Volume Pricing</span>
+        <h3><em>Fleet pricing</em> on multi-unit orders.</h3>
+        <p>Multi-unit pricing scaled to your program. Whether you're outfitting a six-trike summer program or replacing a basketball-chair fleet, your per-unit cost drops as the order size grows. Quoted directly, no posted markup, no minimum to ask.</p>
+      </div>
+
+      <div class="program-card reveal">
+        <span class="label">On-Site Logistics</span>
+        <h3><em>Delivered &amp; assembled</em> at your facility.</h3>
+        <p>We bring fleet orders directly to your facility — fully assembled, adjusted, and ready for use. We unload, set up, and walk your staff through the basics before we leave. Trikes ready to ride, chairs ready to roll, the day they arrive.</p>
+      </div>
+    </div>
+
+    <div class="programs-cta reveal">
+      <span class="label">Direct line for program directors</span>
+      <h3>Talk to us about your <em>program.</em></h3>
+      <p>Email <a href="mailto:programs@recumbenttrikestore.com" class="inline-link">programs@recumbenttrikestore.com</a> or call <a href="tel:3035550148" class="inline-link">(303) 555-0148</a>. We reply within one business day with a fleet quote, available models, and lead-time estimates for your specific program.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Story / GO RIDE ════ -->
+<section class="story">
+  <div class="container">
+    <div class="story-content">
+      <span class="label">No. 05 — The Point</span>
+      <h2 class="display reveal">Go <em>ride.</em></h2>
+      <p class="story-quote reveal">We don't sell a lifestyle. We sell machines. Pick a brand, pick a budget, tell us what you need — and we'll get you on three wheels or in a sport chair as fast as the factory can build it. No gatekeeping, no upsell. Just go ride.</p>
+      <div class="story-attribution reveal">— Recumbent Trike Store · Denver, CO</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Process ════ -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">No. 06 — How It Works</span>
+        <h2 class="display reveal">Three steps, <em>no surprises.</em></h2>
+      </div>
+      <div class="section-head-text reveal">From first question to delivered machine, the process is straightforward.</div>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">Step 01</span>
+        <h3>Email us</h3>
+        <p>Send us a note with what you're looking for — brand, model, riding style, budget, questions. We reply within one business day with model comparisons, configurations, pricing, and delivery details. No question too basic, no configuration too specific.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">Step 02</span>
+        <h3>Place your order</h3>
+        <p>Send us your choice — brand, model, configuration, color, accessories. We confirm specs and pricing in writing, you approve, you pay your deposit. We place the order with the manufacturer the same business day.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">Step 03</span>
+        <h3>Free delivery</h3>
+        <p>Hand-delivery free anywhere in the Denver Metro, or free pickup at our Thornton, CO location. Outside the area, we ship crated via standard freight at cost. We track the build and send you updates the whole way through.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FAQ ════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <span class="label">No. 07 — FAQ</span>
+        <h2 class="display reveal" style="font-size: clamp(40px,5.5vw,64px); margin-top: 16px;">Common <em>questions.</em></h2>
+        <p style="margin-top:24px; color: var(--ink-mute); max-width: 28ch;">Eight things we get asked most often. Anything else, email us.</p>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">How do I know which trike or chair is right for me?</button>
+          <div class="faq-a"><div class="faq-a-inner">Email us with your riding style, budget, and any questions — we'll compare models, recommend configurations, and walk through options. We reply within one business day. We also recommend reading manufacturer spec sheets and watching their model demos on YouTube. If you want a hands-on opinion from a clinician, your physical or occupational therapist is a great resource for fit-related questions.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">What's your delivery area?</button>
+          <div class="faq-a"><div class="faq-a-inner">Two free options for everyone: <strong>free hand-delivery</strong> within the Denver Metro service area (we bring it to your door, fully assembled), or <strong>free pickup</strong> at our Thornton, CO location (you stop by, we hand it over ready to go). Outside the Denver area, we ship crated via standard freight at customer-quoted rates — email us your zip code and we'll run a quote.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">How fast does delivery happen?</button>
+          <div class="faq-a"><div class="faq-a-inner">Two parts: factory build time plus delivery. Most build times are short — TerraTrike and GreenSpeed are both 2–3 weeks (built side-by-side in Michigan by WizWheelz), ICE runs 3–5 weeks from Cornwall, and Top End is 4–6 weeks from Florida. For Denver Metro hand-delivery or Thornton pickup, your order is ready the day the build arrives at our location. For non-local shipping, add 3–7 business days for trikes and 5–10 for chairs. Most orders arrive 3–7 weeks from order date. We'll give you a firm estimate at order confirmation.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">What's the price range across your brands?</button>
+          <div class="faq-a"><div class="faq-a-inner">TerraTrike ranges from <strong>$2,500 – $8,000</strong> depending on model and configuration — the widest selection we carry. GreenSpeed runs <strong>$3,000 – $7,000</strong> for heavy-duty builds. Top End sport wheelchairs start at <strong>$4,000+</strong>. ICE Trikes range from <strong>$6,000 – $12,000</strong> for premium touring. Final pricing depends on model, configuration, and accessories. Email us with a specific configuration and we'll send you exact pricing within one business day.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Can I return or exchange after delivery?</button>
+          <div class="faq-a"><div class="faq-a-inner">Made-to-order machines (anything custom-configured by the manufacturer) are not returnable — once the factory builds your spec, it can't be unbuilt. Stock-spec items can be returned within 14 days for a restocking fee, provided they're in new condition. Defects and warranty issues are covered by manufacturer warranties (typically 5–10 years on frames). Email us for the specific warranty terms on any model you're considering.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">What financing options are available?</button>
+          <div class="faq-a"><div class="faq-a-inner">0% APR financing through Affirm at checkout for orders over $1,500 (subject to approval). HSA and FSA cards accepted. We also accept ACH, all major credit cards, and split-payment plans on deposit-and-balance terms. Some adaptive equipment qualifies for state grants and VA benefits — email us and we'll point you to current programs.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Will you provide documentation for insurance or HSA reimbursement?</button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Every order includes itemized receipts, manufacturer specs, and product descriptions sufficient for HSA/FSA reimbursement and most third-party insurance claims. We are not a DME (durable medical equipment) provider, so we don't bill insurance directly — but we provide everything you need to submit your own claim.</div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Do you work with adaptive rec center programs?</button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — adaptive rec programs, sport leagues, and rehab partners are a big part of what we do, especially across the Front Range and Mountain West. We offer <strong>volume pricing</strong> on multi-unit fleet orders and <strong>on-site delivery and assembly</strong> at your facility (we unload, set up, and walk your staff through the basics). Email <strong>programs@recumbenttrikestore.com</strong> or call <strong>(303) 555-0148</strong> to talk about a fleet quote.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Contact ════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <span class="label">No. 08 — Get In Touch</span>
+        <h2 class="display reveal">Ready to <em>order?</em></h2>
+        <p class="reveal">Email us or fill out the form — we reply within one business day with answers, model comparisons, and pricing.</p>
+
+        <div class="channel-card">
+          <div class="channel-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5l7 5 7-5M3 5h14v10H3V5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="ch-title">Email Us</div>
+            <div class="ch-desc">Questions about models, configurations, pricing, delivery — send us a note and we'll get back to you.</div>
+            <span class="ch-tag">orders@recumbenttrikestore.com · Reply within 1 business day</span>
+          </div>
+        </div>
+
+        <div class="channel-card" onclick="document.getElementById('interest').value='program'; document.getElementById('orderForm').scrollIntoView({behavior:'smooth', block:'start'});">
+          <div class="channel-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 16h14M5 16V9h2v7M9 16V5h2v11M13 16V11h2v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="ch-title">For Program Directors</div>
+            <div class="ch-desc">Adaptive rec center, sport league, or rehab program? Volume pricing and on-site delivery available.</div>
+            <span class="ch-tag">programs@recumbenttrikestore.com</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="orderForm" novalidate>
+        <h3>Send us a note</h3>
+        <p class="form-sub">For order requests or anything you'd rather put in writing.</p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Full name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 555-0100" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="field">
+          <label for="interest">Product interest</label>
+          <select id="interest" name="interest" required>
+            <option value="">Select an option —</option>
+            <option value="terratrike">TerraTrike — $2,500 – $8,000</option>
+            <option value="greenspeed">GreenSpeed — $3,000 – $7,000</option>
+            <option value="topend">Top End sport wheelchair — From $4,000+</option>
+            <option value="ice">ICE Trikes — $6,000 – $12,000</option>
+            <option value="program">Program / fleet order — multiple units</option>
+            <option value="unsure">Not sure yet — help me figure it out</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" placeholder="What model are you looking at, what configuration, where should we deliver — anything we should know." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send →</button>
+        <div class="form-note">We reply within one business day.</div>
+        <div class="form-success" id="formSuccess">Got it — we'll reply within one business day.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Footer ════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Recumbent Trike Store</div>
+        <p class="footer-tag">Denver-based specialty retailer for adaptive sport. Four brands across every price point — from $2,500 daily riders to $12,000 touring machines. Free delivery in the Denver Metro, free pickup in Thornton, CO.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Brands</h4>
+        <a href="#brands">ICE Trikes</a>
+        <a href="#brands">TerraTrike</a>
+        <a href="#brands">GreenSpeed</a>
+        <a href="#brands">Top End</a>
+      </div>
+      <div class="footer-col">
+        <h4>Store</h4>
+        <a href="#delivery">Delivery</a>
+        <a href="#programs">For Programs</a>
+        <a href="#process">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Place an order</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="mailto:orders@recumbenttrikestore.com">orders@recumbenttrikestore.com</a>
+        <a href="mailto:orders@recumbenttrikestore.com">orders@recumbenttrikestore.com</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Recumbent Trike Store · Denver, Colorado</span>
+      <span>Any rider. Every budget.</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Sticky header on scroll
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 12) hdr.classList.add('scrolled');
+    else hdr.classList.remove('scrolled');
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const a = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = '0';
+        }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        a.style.maxHeight = '0';
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Hero image slideshow
+  (function() {
+    const slides = document.querySelectorAll('#heroSlider img');
+    if (slides.length < 2) return;
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000);
+  })();
+
+  // Form submit (front-end demo)
+  document.getElementById('orderForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const success = document.getElementById('formSuccess');
+    success.classList.add('visible');
+    e.target.reset();
+    setTimeout(() => success.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+  });
+
+</script>
+
+</body>
+</html>
